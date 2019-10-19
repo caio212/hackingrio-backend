@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { AuthBody } from './auth.interfaces';
-import { RestService } from 'src/shared/rest/rest.service';
+import { RestService } from '../shared/rest/rest.service';
 
 @Injectable()
 export class AuthService {
