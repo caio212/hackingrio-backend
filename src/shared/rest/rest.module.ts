@@ -8,6 +8,10 @@ import { ConfigModule } from "../config/config.module";
         ConfigModule
     ],
     providers: [ RestService ],
-    exports: [ RestService ]
+    exports: [
+        ConfigModule,
+        HttpModule,
+        RestService
+    ]
 })
 export class RestModule {}

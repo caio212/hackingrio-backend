@@ -10,8 +10,8 @@ export class AuthController {
     ) { }
 
     @Post()
-    async postAuth(@Body() body: AuthBody) {
-        return await this.authService.postAuth(body);
+    postAuth(@Body() body: AuthBody) {
+        return this.authService.postAuth(body);
     }
 
 }

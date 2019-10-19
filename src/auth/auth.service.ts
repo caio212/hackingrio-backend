@@ -11,8 +11,7 @@ export class AuthService {
 
     postAuth(auth: AuthBody) {
         // auth logic
-        const result = this.restService.postUsers();
-        return result;
+        return this.restService.putUsers(auth);
     }
 
 }

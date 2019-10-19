@@ -3,4 +3,5 @@ export interface ConfigInterface {
     PROVIDER_HOST: string;
     PROVIDER_PORT: string;
     PROVIDER_API: string;
+    PROVIDER_KEY: string;
 }
