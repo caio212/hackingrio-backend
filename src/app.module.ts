@@ -9,4 +9,4 @@ import { routes } from './app.routes';
     AuthModule
   ]
 })
-export class AppModule {}
+export class AppModule { }

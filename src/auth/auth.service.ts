@@ -9,9 +9,9 @@ export class AuthService {
         private restService: RestService
     ) { }
 
-    async postAuth(auth: AuthBody) {
+    postAuth(auth: AuthBody) {
         // auth logic
-        const result = await this.restService.postUsers();
+        const result = this.restService.postUsers();
         return result;
     }
 
