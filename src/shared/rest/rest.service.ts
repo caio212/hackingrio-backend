@@ -17,7 +17,7 @@ export class RestService {
     }
 
     putUsers(body: AuthBody) {
-        return this.put(this.configService.getConfig().PROVIDER_API, body);
+        return this.put('/users/phone', body);
     }
 
     put(endpoint: string, body: any) {
@@ -25,7 +25,7 @@ export class RestService {
         const host = `${config.PROVIDER_PROTOCOL}://${config.PROVIDER_HOST}:${config.PROVIDER_PORT}`;
         endpoint = resolve(config.PROVIDER_API, endpoint);
         const url = resolve(host, endpoint);
-        return this.httpService.post(url, body, {
+        return this.httpService.put(url, body, {
             headers: this.getHeaders()
         }).pipe(first(), map(res => res.data));
     }
