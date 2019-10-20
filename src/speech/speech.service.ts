@@ -9,20 +9,20 @@ export class SpeechService {
         private restService: RestService
     ) { }
 
-    createProfile(cpf: number) {
+    createProfile(phone: number) {
         return this.restService.postCreateProfile().pipe(
-            flatMap(id => this.restService.postSpeechProfileId(id, cpf))
+            flatMap(id => this.restService.postSpeechProfileId(id, phone))
         );
     }
 
-    createEnrollment(cpf: number, body: Uint16Array) {
-        return this.restService.getSpeechProfileId(cpf).pipe(
+    createEnrollment(phone: number, body: Uint16Array) {
+        return this.restService.getSpeechProfileId(phone).pipe(
             flatMap(id => this.restService.postSpeechEnroll(id, body))
         );
     }
 
-    verifySpeaker(cpf: number, body: Uint16Array) {
-        return this.restService.getSpeechProfileId(cpf).pipe(
+    verifySpeaker(phone: number, body: Uint16Array) {
+        return this.restService.getSpeechProfileId(phone).pipe(
             flatMap(id => this.restService.postSpeechVerify(id, body))
         );
     }

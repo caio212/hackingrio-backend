@@ -12,7 +12,7 @@ export class AuthService {
     ) { }
 
     async postAuth(auth: AuthBody) {
-        if (auth.audio) await this.speechService.verifySpeaker(auth.cpf, auth.audio).toPromise();
+        if (auth.audio) await this.speechService.verifySpeaker(auth.phone, auth.audio).toPromise();
         if (auth.cpf) await this.restService.postUsers(auth).toPromise();
         else await this.restService.putUsers(auth).toPromise();
     }

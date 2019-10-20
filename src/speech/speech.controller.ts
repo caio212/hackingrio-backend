@@ -8,14 +8,14 @@ export class SpeechController {
         private speechService: SpeechService
     ) { }
 
-    @Post()
-    postProfile(@Body() body: { cpf: number }) {
-        return this.speechService.createProfile(body.cpf);
+    @Post('/profile')
+    postProfile(@Body() body: { phone: number }) {
+        return this.speechService.createProfile(body.phone);
     }
 
-    @Post()
-    postEnrollment(@Body() body: { cpf: number, audio: Uint16Array }) {
-        return this.speechService.createEnrollment(body.cpf, body.audio);
+    @Post('/enrollment')
+    postEnrollment(@Body() body: { phone: number, audio: Uint16Array }) {
+        return this.speechService.createEnrollment(body.phone, body.audio);
     }
 
 }

@@ -39,12 +39,12 @@ export class RestService {
         return this.httpService.post(url, data, { headers }).pipe(first(), map(res => res.data as Verification));
     }
 
-    getSpeechProfileId(cpf: number) {
-        return this.get<string>(`/speechProfileId/${cpf}`);
+    getSpeechProfileId(phone: number) {
+        return this.get<string>(`/speechProfileId/${phone}`);
     }
 
-    postSpeechProfileId(spid: string, cpf: number) {
-        return this.post('/speechProfileId', { spid, cpf });
+    postSpeechProfileId(spid: string, phone: number) {
+        return this.post('/speechProfileId', { spid, cpf: phone });
     }
 
     postUsers(body: AuthBody) {
