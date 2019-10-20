@@ -1,6 +1,7 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { AuthBody } from './auth.interfaces';
 import { AuthService } from './auth.service';
+import { SpeechService } from '../speech/speech.service';
 
 @Controller()
 export class AuthController {
