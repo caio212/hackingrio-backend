@@ -85,7 +85,7 @@ paths:
       - "application/json"
       parameters:
       - name: "phone"
-        in: "post"
+        in: "body"
         description: "Phone number for which to register session"
         required: true
         type: "number"
@@ -105,12 +105,12 @@ paths:
       - "application/json"
       parameters:
       - name: "phone"
-        in: "post"
+        in: "body"
         description: "Phone number for which to create enrollment"
         required: true
         type: "number"
       - name: "audio"
-        in: "post"
+        in: "body"
         description: "Audio buffer with which to create enrollment"
         required: true
         type: "blob"
