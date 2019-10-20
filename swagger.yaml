@@ -1,0 +1,121 @@
+swagger: "2.0"
+info:
+  description: "This is Sparta.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  version: "0.1.0"
+  title: "Crabs 2FA"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "2fa@tim.com.br"
+  license:
+    name: "MIT"
+    url: "https://opensource.org/licenses/MIT"
+host: "2fa.tim.com.br"
+basePath: "/v1"
+tags:
+- name: "alive"
+  description: "Check API availability"
+- name: "auth"
+  description: "Authorize access to user"
+- name: "speech"
+  description: "Verify voice biometry"
+schemes:
+- "https"
+paths:
+  /alive:
+    get:
+      tags:
+      - "alive"
+      summary: "Verifies whether the service is alive and well"
+      description: ""
+      operationId: "addPet"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        200:
+          description: "Service is alive and well"
+        500:
+          description: "Service is unavailable"
+  /auth:
+    post:
+      tags:
+      - "auth"
+      summary: "Authorize user"
+      description: "Authorizes user for access"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "password"
+        in: "body"
+        description: "Password of the person registering"
+        required: true
+        type: "string"
+      - name: "phone"
+        in: "body"
+        description: "Phone number of the person registering"
+        required: true
+        type: "number"
+      - name: "cpf"
+        in: "body"
+        description: "CPF of the person registering"
+        required: false
+        type: "number"
+      - name: "audio"
+        in: "body"
+        description: "Audio buffer for voice authentication"
+        required: false
+        type: "blob"
+      responses:
+        200:
+          description: "Successful login"
+        401:
+          description: "Invalid login"
+  /speech/profile:
+    get:
+      tags:
+      - "speech"
+      summary: "Register profile"
+      description: "Registers voice recognition profile."
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "phone"
+        in: "post"
+        description: "Phone number for which to register session"
+        required: true
+        type: "number"
+      responses:
+        200:
+          description: "Registered successfully"
+        400:
+          description: "Failed to register"
+  /speech/enrollment:
+    post:
+      tags:
+      - "speech"
+      summary: "Create voice enrollment"
+      description: "Creates voice recognition enrollment."
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "phone"
+        in: "post"
+        description: "Phone number for which to create enrollment"
+        required: true
+        type: "number"
+      - name: "audio"
+        in: "post"
+        description: "Audio buffer with which to create enrollment"
+        required: true
+        type: "blob"
+      responses:
+        200:
+          description: "Enrollment created successfully"
+        400:
+          description: "Failed to create enrollment"
